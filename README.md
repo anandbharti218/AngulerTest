@@ -1,4 +1,3 @@
-# AngulerTest
 Steps For Run Setup & Run The Project
 -----------------------------------------
 Go to the firebase_storage directory and follow the steps
