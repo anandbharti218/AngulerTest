@@ -1,14 +1,16 @@
 Steps For Run Setup & Run The Project
+
 -----------------------------------------
+
 Go to the firebase_storage directory and follow the steps
 Step 1: First Execute the command `npm i or npm install`
 Step 2: Then Execute the command `npm run start`
 Now the project is up and running.
+
 ---------------------------------------
 
 /**
     Question 1: ( compulsory )
-
 	Create a file upload feature in Angular that accepts any image or video files, less than 10 MB and upload the file to the firebase storage. Add some some interactions or animations like upload progress and file upload status
 	Add a preview of the file that has been uploaded.
 	Place appropriate validations and error messages wherever required
@@ -19,13 +21,13 @@ http://3.110.122.52/anand/browser/
 
 
 -----------------------------------------
+
 Question number 2-4 are developed using the AngulerJS library in single html file.
+
 ---------------------------------------
 
 /**
-
     Question 2: 
-
 	Write a simple application using a recursive function that accepts a value (integer) and returns the fibonacci value at that position in the series.
 	The application should be performant at scale to handle larger numbers without slowing down exponentially.
  */
