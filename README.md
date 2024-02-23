@@ -14,6 +14,7 @@ Now the project is up and running.
 
 /**
     Question 1: ( compulsory )
+    
 	Create a file upload feature in Angular that accepts any image or video files, less than 10 MB and upload the file to the firebase storage. Add some some interactions or animations like upload progress and file upload status
 	Add a preview of the file that has been uploaded.
 	Place appropriate validations and error messages wherever required
@@ -31,6 +32,7 @@ Question number 2-4 are developed using the AngulerJS library in single html fil
 
 /**
     Question 2: 
+
 	Write a simple application using a recursive function that accepts a value (integer) and returns the fibonacci value at that position in the series.
 	The application should be performant at scale to handle larger numbers without slowing down exponentially.
  */
