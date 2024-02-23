@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="balancedSubstringApp">
+  <head>
+    <title>Longest Balanced Substring</title>
+  </head>
+
+  <body ng-controller="MainController">
+    
+    <div style="width: 50%; margin-left:50px; min-width: 500px; margin-top: 50px;">
+      <h2>Question 3:Longest Balanced Substring</h2>
+      <label>Enter string:</label><br/>
+      <input style="margin-top:10px;" type="text" ng-model="inputString" placeholder="Enter string"  /><br/>
+      <button style="margin-top:20px;" ng-click="result = findLongestBalancedSubstring(inputString)">Find</button>
+
+      <div ng-if="result.length > 0">
+        <h3>Longest Balanced Substrings:</h3>
+        <p>{{result}}</p>
+      </div>
+      <div ng-if="result.length === 0">
+        <p>No balanced substring found.</p>
+      </div>
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script>
+    angular.module('balancedSubstringApp', [])
+      .controller('MainController', function ($scope) {
+        function findUnique(str) {
+            // The variable that contains the unique values
+            let uniq = "";
+        
+            for (let i = 0; i < str.length; i++) {
+                if (uniq.includes(str[i]) === false) {
+                    uniq += str[i]
+                }
+            }
+            return uniq;
+        }
+        $scope.findLongestBalancedSubstring = function (inputString) {
+          let balancedSubstring = [];
+          for (let i = inputString.length; i > 2; i--) {
+            let differce = inputString.length - i;
+            if(differce){
+              for (let j = 0; j <= differce; j++) {
+                let subString = inputString.substring(j,(i+j));
+                let uniqueString = findUnique(subString);
+                if(uniqueString.length == 2 && (subString.split(uniqueString[0]).length - 1) == (subString.split(uniqueString[1]).length - 1)){
+                  console.log('loop '+inputString, differce);
+                  balancedSubstring.push(subString);
+                }
+              }
+              if(balancedSubstring.length){
+                console.log(balancedSubstring);
+                return balancedSubstring;
+              }
+            }else{
+                let uniqueString = findUnique(inputString);
+                if(uniqueString.length == 2 && (inputString.split(uniqueString[0]).length - 1) == (inputString.split(uniqueString[1]).length - 1)){
+                  console.log('first'+inputString);
+                  balancedSubstring.push(inputString);
+                  return balancedSubstring;
+                }
+            }
+          }
+          return balancedSubstring;
+        };
+      });
+  </script>
+</html>

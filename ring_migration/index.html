@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="RingMigrationApp">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ring Migration</title>
+  </head>
+  <body>
+    <div ng-controller="RingMigrationController">
+      <div style="width: 50%; margin-left:50px; min-width: 500px; margin-top: 50px;">
+        <h2>Question 4: Ring Migration</h2>
+        <form ng-submit="migrateRings()">
+          <label for="numberOfRings">Number of Rings:</label><br>
+          <input style="margin-top: 10px;" type="number" ng-model="numberOfRings" required placeholder="Enter the value of N"><br>
+          <button style="margin-top: 20px;" type="submit">Migrate Rings</button>
+        </form>
+        <div ng-if="steps.length">
+          <h3>Migration steps:</h3>
+          <ul>
+            <li ng-repeat="step in steps track by $index">{{ step }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script>
+    angular.module('RingMigrationApp', [])
+      .controller('RingMigrationController', function ($scope) {
+        $scope.steps = [];
+        $scope.migrateRings = function () {
+          const N = parseInt($scope.numberOfRings, 10);
+          $scope.steps = RingMigrator.migrateRings(N, 'A', 'B', 'C');
+        };
+
+        class RingMigrator {
+          static migrateRings(N, A, B, C) {
+            const steps = [];
+
+            const moveRing = (n, a, b, c) => {
+              if (n === 1) {
+                steps.push(`${n}: ${a} to ${b}`);
+              } else {
+                moveRing(n - 1, a, c, b);
+                steps.push(`${n}: ${a} to ${b}`);
+                moveRing(n - 1, c, b, a);
+              }
+            };
+            moveRing(N, A, B, C);
+            return steps;
+          }
+        }
+      });
+  </script>
+
+</html>

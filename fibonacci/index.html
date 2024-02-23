@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="fsApp">
+  <head>
+    <title>Fibonacci Value find</title>
+  </head>
+
+  <body ng-controller="FSController">
+
+    <div style="width: 50%; margin-left:50px; min-width: 500px; margin-top: 50px;">
+      <h2>Question 2: Fibonacci position</h2>
+      <label>Enter fibonacci position:</label><br/>
+      <input style="margin-top: 10px;" type="text" ng-model="position" placeholder="Enter position" />
+      <br/>
+      <button style="margin-top: 20px;" ng-click="calFS()">Submit</button>
+      <p>{{ result }}</p>
+    </div>
+  </body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script>
+    angular.module('fsApp', [])
+      .controller('FSController', function ($scope) {
+
+        // Recursive function
+        function fibonacciSeries(n, n2) {
+          n2 = n2 || {};
+          if (n <= 1) {
+            return n;
+          }
+
+          if (!n2[n]) {
+            n2[n] = fibonacciSeries(n - 1, n2) + fibonacciSeries(n - 2, n2);
+          }
+
+          return n2[n];
+        }
+
+        // Function to calculate Fibonacci and update result
+        $scope.calFS = function () {
+          var position = parseInt($scope.position);
+
+          if (isNaN(position) || position < 0) {
+            $scope.result = "Please enter a non-negative integer.";
+          } else {
+            const value = fibonacciSeries(position);
+            $scope.result = "Fibonacci value at position " + position + " is: " + value.toLocaleString();
+          }
+        };
+      });
+  </script>
+</html>

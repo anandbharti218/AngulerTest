@@ -1,0 +1,63 @@
+<style>
+.progress {
+  /* margin:20px auto; */
+  padding:0;
+  width:90%;
+  height:30px;
+  overflow:hidden;
+  background:#e5e5e5;
+  border-radius:6px;
+}
+
+.bar {
+	position:relative;
+  float:left;
+  min-width:1%;
+  height:100%;
+  background:cornflowerblue;
+}
+
+.percent {
+	position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  margin:0;
+  font-family:tahoma,arial,helvetica;
+  font-size:12px;
+  color:white;
+}
+</style>
+
+<div style="width: 50%; margin-left:50px; min-width: 500px; margin-top: 50px;">
+ 
+  <h2>Question 1: File Upload</h2>
+  <label>Please Select File</label><br/>
+  <input style="margin-top:10px;" #fileInput [(ngModel)]="fileName" type="file" (change)="chooseFile($event)" accept="video/*,image/*" data-max-size="10240">
+  <br/>
+  <button  style="margin-top:20px;" (click)="addData()">Upload</button>
+  <div *ngIf="(uploadPercent$  | async ) !== null"  style="margin-top:20px;" >
+    <p>Upload Progress:{{ uploadPercent$  | async }}%</p>
+    <div class="progress">
+      <!-- <div class="bar"  style="width: {{uploadPercent$  | async }}%"> -->
+        
+      <div class="bar"  [style.width.%]="uploadPercent$ | async "
+      aria-valuenow="25"
+      aria-valuemin="0"
+      aria-valuemax="100">
+        <p class="percent">{{ uploadPercent$  | async }}%</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="(uploadPercent$  | async ) == 100"  style="margin-top:20px;" >
+    <p>File uploaded successfully!</p>
+    <div *ngIf="fileType == 'image'">
+      <img style="max-width:200px;max-height:500px;" src="{{ downloadURL$  | async }}" alt="Uploaded File"  *ngIf="(downloadURL$  | async ) !== null">
+    </div>
+    <div *ngIf="fileType == 'video'">
+      <video width="320" height="240" controls src="{{ downloadURL$  | async }}"  *ngIf="(downloadURL$  | async ) !== null">
+      </video>
+    </div>
+  </div>
+</div>
+
