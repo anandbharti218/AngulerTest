@@ -1,10 +1,12 @@
 Steps For Run Setup & Run The Project
 
+Go to the firebase_storage directory and follow the steps
+
 -----------------------------------------
 
-Go to the firebase_storage directory and follow the steps
 Step 1: First Execute the command `npm i or npm install`
 Step 2: Then Execute the command `npm run start`
+
 Now the project is up and running.
 
 ---------------------------------------
