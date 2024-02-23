@@ -1,12 +1,10 @@
 # AngulerTest
 Steps For Run Setup & Run The Project
 -----------------------------------------
-
+Go to the firebase_storage directory and follow the steps
 Step 1: First Execute the command `npm i or npm install`
 Step 2: Then Execute the command `npm run start`
 Now the project is up and running.
-
-The Apis Information and their Urls
 ---------------------------------------
 
 /**
@@ -19,6 +17,11 @@ The Apis Information and their Urls
  URL
 
 http://3.110.122.52/anand/browser/
+
+
+-----------------------------------------
+Question number 2-4 are developed using the AngulerJS library in single html file.
+---------------------------------------
 
 /**
 
