@@ -6,7 +6,7 @@ Go to the firebase_storage directory and follow the steps
 
 Step 1: First Execute the command `npm i or npm install`
 
-Step 2: Then Execute the command `npm run start`
+Step 2: Then Execute the command `ng serve -o`
 
 Now the project is up and running.
 
